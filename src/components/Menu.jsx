@@ -4,7 +4,7 @@ import useMenu from "../hooks/useMenu";
 
 export default function Menu() {
   const { restaurantsID } = useParams();
-  const { remove, addToCart, cartItems } = useCart();
+  const { reduce, addToCart, cartItems } = useCart();
 
   const recommended = useMenu(restaurantsID);
 
@@ -51,23 +51,44 @@ export default function Menu() {
               />
             </div>
 
-            {cartItems.find((items) => items.id === item.card.info.id) ? (
-              <button
-                onClick={() => remove(item.card.info)}
-                className=" border h-8 w-22 font-bold text-green-600 bg-white absolute mt-36 "
-                style={{ borderRadius: "12px" }}
-              >
-                Remove
-              </button>
-            ) : (
-              <button
-                onClick={() => addToCart(item.card.info)}
-                className=" border h-8 w-22 font-bold text-green-600 bg-white absolute mt-36 "
-                style={{ borderRadius: "12px" }}
-              >
-                ADD
-              </button>
-            )}
+            {(() => {
+              const cartItem = cartItems.find(
+                (prevItem) => prevItem.id === item.card.info.id
+              );
+              if (cartItem) {
+                return (
+                  <div
+                    className="absolute mt-36 bg-white border-t border-b flex justify-between h-8 w-22 items-center overflow-hidden text-green-600"
+                    style={{ borderRadius: "10px" }}
+                  >
+                    <button
+                      onClick={() => reduce(cartItem)}
+                      className="border h-8 w-7 pb-1 text-green-600"
+                      style={{ borderRadius: "10px 0 0 10px" }}
+                    >
+                      -
+                    </button>
+                    <div>{cartItem.quantity}</div>
+                    <button
+                      onClick={() => addToCart(cartItem)}
+                      className="border h-8 w-7 pb-1 text-green-600"
+                      style={{ borderRadius: "0px 10px 10px 0px" }}
+                    >
+                      +
+                    </button>
+                  </div>
+                )
+              }
+              return (
+                <button
+                  onClick={() => addToCart(item.card.info)}
+                  className=" border h-8 w-22 font-bold text-green-600 bg-white absolute mt-36 "
+                  style={{ borderRadius: "12px" }}
+                >
+                  ADD
+                </button>
+              );
+            })()}
           </div>
         </div>
       ))}

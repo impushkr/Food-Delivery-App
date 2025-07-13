@@ -11,10 +11,6 @@ export default function AllRestaurants() {
 
   return (
     <>
-
-      
-      
-
       <div className="flex flex-wrap justify-center pt-10">
         
         {restaurants.map((card) => (
@@ -77,7 +73,11 @@ export default function AllRestaurants() {
                 {card.info.name.slice(0, 25)}
               </h2>
 
-              <div className="flex gap-1.5 items-center ml-3">
+              <div className="flex gap-1 items-center ml-3">
+                <img 
+                className="size-4 rounded-2xl"
+                src="/ratestar.webp" 
+                alt="rating-star-img" />
                 <p>
                   <b>{card.info.avgRating}</b>
                 </p>
