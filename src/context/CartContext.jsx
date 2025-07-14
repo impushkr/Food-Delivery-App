@@ -22,12 +22,12 @@ export function CartProvider({ children }) {
       if (existing) {
         return prevItem.map((items) =>
           items.id === item.id
-            ? { ...items, quantity: items.quantity + 1 }
+            ? { ...items, quantity: items.quantity + 1 , cartprice:(item?.price || item?.variantsV2?.pricingModels?.[0].price) / 100 * (item.quantity+1) }
             : items
         );
       }
 
-      return [...prevItem, { ...item, quantity: 1 }];
+      return [...prevItem, { ...item, quantity: 1 , cartprice : (item?.price || item?.variantsV2?.pricingModels?.[0].price) / 100}];
     });
   }
 
@@ -41,7 +41,7 @@ function reduce(item) {
 
       return prevItem.map((items)=>
       items.id === item.id ? 
-      {...items , quantity : items.quantity - 1}: items
+      {...items , quantity : items.quantity - 1 , cartprice: (item?.price || item?.variantsV2?.pricingModels?.[0].price) / 100}: items
     )
     })
   // }

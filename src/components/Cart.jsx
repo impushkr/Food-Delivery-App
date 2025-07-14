@@ -1,10 +1,11 @@
 import { useCart } from "../context/CartContext";
 import Navbar from "./Navbar";
-import Footer from "./Footer";
 import { Link } from "react-router-dom";
 
 export default function Cart() {
   const { cartItems, addToCart, reduce } = useCart();
+
+  const totalPrize=cartItems.reduce((sum,item)=>sum+item.cartprice,0)
 
   return (
     <>
@@ -79,7 +80,7 @@ export default function Cart() {
                   <div>
                     <p>
                       <strong>
-                        ₹ {item?.variantsV2?.pricingModels?.[0]?.price / 100}
+                        ₹ {item.cartprice}
                       </strong>
                     </p>
                   </div>
@@ -118,15 +119,20 @@ export default function Cart() {
                 <p> Bill Details</p>
                 <div className="text-gray-500">
                   <p> Item Total</p>
-                  <p>Delivery fee | __ kms </p>
+                  <p>Delivery fee  </p>
                   <p>Gst & Other Charges </p>
                 </div>
               </div>
               <div className="text-gray-500 mt-5">
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
+                <p>{totalPrize}</p>
+                <p>35.65</p>
+                <p>  18%</p>
               </div>
+            </div>
+
+            <div className="flex gap-90 mt-3 font-bold">
+              <p >Total</p>
+              <p>{totalPrize+100}</p>
             </div>
 
             <button className="mt-5 h-10 w-112 font-bold text-white bg-blue-500 rounded-2xl">

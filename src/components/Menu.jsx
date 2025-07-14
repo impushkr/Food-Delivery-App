@@ -28,7 +28,7 @@ export default function Menu() {
             </p>
             <p>
               <strong>
-                ₹ {item?.card?.info?.variantsV2?.pricingModels?.[0].price / 100}
+                ₹ {(item?.card?.info?.price || item?.card?.info?.variantsV2?.pricingModels?.[0].price) / 100}
               </strong>
             </p>
             <div className="flex items-center gap-1">
