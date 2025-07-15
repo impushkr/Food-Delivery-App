@@ -69,7 +69,7 @@ export default function Navbar() {
 
       <div className="mt-8 bg-gray-50 h-35">
         <h2 className=" pt-12  text-2xl ml-40">
-          <strong>Restaurants with online food delivery in Jalandhar</strong>
+          <strong>Restaurants with online food delivery near you</strong>
         </h2>
 
         <div className="flex gap-8 ml-35 mt-5">

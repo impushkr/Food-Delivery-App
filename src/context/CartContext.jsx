@@ -33,18 +33,14 @@ export function CartProvider({ children }) {
 
 function reduce(item) {
   
-  //  if(item.quantity===1){
-  //   remove(item)
-  // }
-  // else{
      setCartItems((prevItem)=>{
 
       return prevItem.map((items)=>
       items.id === item.id ? 
-      {...items , quantity : items.quantity - 1 , cartprice: (item?.price || item?.variantsV2?.pricingModels?.[0].price) / 100}: items
+      {...items , quantity : items.quantity - 1 , cartprice: item.cartprice-(item?.price || item?.variantsV2?.pricingModels?.[0].price) / 100 }: items
     )
     })
-  // }
+
   }
 
 
