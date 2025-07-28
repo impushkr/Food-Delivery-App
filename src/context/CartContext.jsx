@@ -12,8 +12,7 @@ export function CartProvider({ children }) {
     if(item.quantity===0){
       remove(item)
     }
-    }
-)
+    })
 
   function addToCart(item) {
     setCartItems((prevItem) => {

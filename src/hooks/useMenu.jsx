@@ -14,9 +14,21 @@ export default function useMenu(restaurantId) {
         .then((response) => response.json())
         .then((data) => {
           const cards =
-            data?.data?.cards[1]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
+            data?.data?.cards[0]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
               ?.card?.card?.itemCards ||
+            data?.data?.cards[1]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
+              ?.card?.card?.itemCards||
+            data?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
+              ?.card?.card?.itemCards||
+            data?.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
+              ?.card?.card?.itemCards||
             data?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
+              ?.card?.card?.itemCards||
+            data?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
+              ?.card?.card?.itemCards||
+            data?.data?.cards[6]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
+              ?.card?.card?.itemCards||
+            data?.data?.cards[7]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
               ?.card?.card?.itemCards;
           console.log(cards);
           setRecommended(cards);
