@@ -9,7 +9,6 @@ export default function Footer(){
              <h2 className="text-2xl text-orange-600 font-bold">Swiggy</h2>
             </div>
             <p className="text-gray-500 text-sm mt-1 ml-1">@ 2025 Swiggy Limited</p>
-            <p className="text-gray-500 text-sm mt-1 ml-1">Clone by Pushkar Singh</p>
             </div>
 
             <div>
