@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import dummyMenu from "../data/dummyMenu";
+
 
 export default function useMenu(restaurantId) {
-  const restaurantsID = restaurantId;
 
+  const restaurantsID = restaurantId;
   const [recommended, setRecommended] = useState([]);
 
   useEffect(() => {
@@ -36,5 +38,10 @@ export default function useMenu(restaurantId) {
     });
   }, [restaurantId]);
 
-  return recommended;
+  if (recommended.length>0){
+    return recommended
+  } 
+  else{
+    return dummyMenu;
+  }
 }
